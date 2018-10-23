@@ -15,16 +15,18 @@ class DBImport:
     def import_data(self, data: ParserRequestResult):
         # drop table
         sql_drop = self.db_sql.get_sql_from_file(DBTables.CATEGORY.value, 'drop')
-        self.connector.cursor.execute(sql_drop)
+        self.connector.connection.execute(sql_drop)
 
         # create table
         sql_create = self.db_sql.get_sql_from_file(DBTables.CATEGORY.value, 'create')
-        self.connector.cursor.execute(sql_create)
+        self.connector.connection.execute(sql_create)
 
         # insert data
         # create table
         sql_insert = self.db_sql.get_sql_from_file(DBTables.CATEGORY.value, 'insert')
 
         for category in data.categories:
-             self.connector.cursor.execute(sql_insert, [category.name])
+            self.connector.connection.execute(sql_insert, [category.name])
+
+        self.connector.connection.commit()
         return
