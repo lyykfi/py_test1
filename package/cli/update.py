@@ -4,7 +4,6 @@ from package.db.import_data import DBImport
 
 PARSER_REQUEST = AliExpressParserRequest()
 data = PARSER_REQUEST.get_last_data()
-print(data)
 
 DB_IMPORT = DBImport()
 DB_IMPORT.import_data(data)
