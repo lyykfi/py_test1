@@ -1,4 +1,6 @@
 import json
+import itertools
+from functools import reduce
 
 from package.db.connect import DBConnector
 from package.db.sql import DBSQL
@@ -27,6 +29,7 @@ def get_category():
     data = cursor.fetchall()
     cursor.close()
 
-    print(data)
+    data = reduce(list.__add__, map(list, data))
+
 
     return json.dumps(data)
