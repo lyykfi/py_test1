@@ -1,1 +1,3 @@
-import package.cli.update
+from package.cli.update import UpdateCli
+
+UpdateCli.run()

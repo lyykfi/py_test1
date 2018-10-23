@@ -1,19 +1,13 @@
 import json
-import itertools
+from flask import Flask
+
 from functools import reduce
 
 from package.db.connect import DBConnector
 from package.db.sql import DBSQL
 from package.db.tables import DBTables
 
-from flask import Flask
-
-app = Flask(__name__)
-
-
-@app.route("/")
-def hello():
-    return "Hello World!"
+app = Flask('API')
 
 @app.route("/category")
 def get_category():
@@ -25,11 +19,10 @@ def get_category():
     sql_select = db_sql.get_sql_from_file(DBTables.CATEGORY.value, 'select')
     
     cursor = connector.connection.cursor()
-    result = cursor.execute(sql_select)
+    cursor.execute(sql_select)
     data = cursor.fetchall()
     cursor.close()
 
     data = reduce(list.__add__, map(list, data))
-
 
     return json.dumps(data)
