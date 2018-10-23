@@ -1,0 +1,5 @@
+singleton_decorator==1.0.0
+Flask==1.0.2
+json_config==2.0.1
+beautifulsoup4==4.6.3
+typing==3.6.6
