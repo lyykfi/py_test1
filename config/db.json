@@ -1,0 +1,4 @@
+{
+    "db_file": "db/test.db",
+    "sql_folder": "sql/"
+}
