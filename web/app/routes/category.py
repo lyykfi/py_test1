@@ -12,11 +12,14 @@ class CategoryResource(object):
     def on_get(self, req, resp):
         # init connector
         connector = DBConnector()
+        session = connector.get_session()
 
         s = select([Category])
-        result = connector.session.execute(s)
+        result = session.execute(s)
 
         data = list(map(lambda x: x.name, result))
+
+        session.close_all()
 
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(data)

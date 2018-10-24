@@ -14,7 +14,8 @@ class DBConnector:
         self.config = json_config.connect('./config/db.json')
         self.engine = create_engine('sqlite:///'+self.config['db_file'], echo=True)
 
-        Session = sessionmaker(bind=self.engine)
-        self.session = Session()
-
         Base.metadata.create_all(self.engine)
+
+    def get_session(self):
+        Session = sessionmaker(bind=self.engine)
+        return Session()
