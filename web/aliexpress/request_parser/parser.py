@@ -4,7 +4,7 @@ import json_config
 
 from bs4 import BeautifulSoup
 from .result import ParserRequestResult
-from package.aliexpress.models.category import AliExpressCategory
+from web.aliexpress.models.category import AliExpressCategory
 
 """ Class for parse aliexpress """
 class AliExpressParserRequest:

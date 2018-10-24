@@ -1,7 +1,7 @@
 """ """
 
 from .connect import DBConnector
-from package.aliexpress.request_parser.result import ParserRequestResult
+from web.aliexpress.request_parser.result import ParserRequestResult
 from .sql import DBSQL
 from .tables import DBTables
 

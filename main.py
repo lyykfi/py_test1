@@ -1,17 +1,22 @@
 """ """
 import sys
+import argparse
 import os
 from wsgiref import simple_server
 
 sys.path.append(os.getcwd())
 
-from package.app.app import ServerApp
+from web.app.app import ServerApp
 
 if __name__ == "__main__":
-    PORT = 8000
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', type=int, help='server port')
+    args = parser.parse_args()
+
+    PORT = args.port or 8000
 
     app = ServerApp()
-    app.start()
 
     print("Server was started: " + str(PORT))
 

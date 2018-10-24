@@ -1,7 +1,7 @@
 """ Parse result """
 
 from typing import Sequence
-from package.aliexpress.models.category import AliExpressCategory
+from web.aliexpress.models.category import AliExpressCategory
 
 """ class ParserRequestResult """
 class ParserRequestResult:

@@ -4,9 +4,9 @@ from functools import reduce
 
 import falcon
 
-from package.db.connect import DBConnector
-from package.db.sql import DBSQL
-from package.db.tables import DBTables
+from web.db.connect import DBConnector
+from web.db.sql import DBSQL
+from web.db.tables import DBTables
 
 
 class CategoryResource(object):

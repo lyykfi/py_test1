@@ -1,11 +1,11 @@
 """The module for update data from aliexpress """
-from package.aliexpress.request_parser.parser import AliExpressParserRequest
-from package.db.import_data import DBImport
+from web.aliexpress.request_parser.parser import AliExpressParserRequest
+from web.db.import_data import DBImport
 
 
 class UpdateCli:
     @staticmethod
-    def run(self):
+    def run():
         PARSER_REQUEST = AliExpressParserRequest()
         data = PARSER_REQUEST.get_last_data()
 
