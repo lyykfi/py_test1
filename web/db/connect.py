@@ -1,4 +1,6 @@
 """ """
+from contextlib import contextmanager
+
 import json_config
 from singleton_decorator import singleton
 from sqlalchemy import create_engine
@@ -17,5 +19,17 @@ class DBConnector:
         Base.metadata.create_all(self.engine)
 
     def get_session(self):
-        Session = sessionmaker(bind=self.engine)
-        return Session()
+        return sessionmaker(bind=self.engine)
+
+    @contextmanager
+    def session_scope(self):
+        Session = self.get_session()
+        session = Session()
+        try:
+            yield session
+            session.commit()
+        except:
+            session.rollback()
+            raise
+        finally:
+            session.close()

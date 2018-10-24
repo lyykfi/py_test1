@@ -11,17 +11,11 @@ class DBImport:
         self.connector = DBConnector()
 
     def import_data(self, data: ParserRequestResult):
-        session = self.connector.get_session()
+        with self.connector.session_scope() as session:
+            print(session)
+            session.add_all([Category(name=category.name) for category in data.categories])
 
-        for category in data.categories:
-            newCategory = Category(name=category.name)
-            session.add(newCategory)
             try:
                 session.commit()
             except SQLAlchemyError as error:
-                session.rollback()
                 print(error.args)
-
-
-        session.close_all()
-        return
