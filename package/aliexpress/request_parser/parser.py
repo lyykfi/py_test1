@@ -1,12 +1,12 @@
 """ """
 import urllib.request
 import json_config
-import re
 
 from bs4 import BeautifulSoup
 from .result import ParserRequestResult
 from package.aliexpress.models.category import AliExpressCategory
 
+""" Class for parse aliexpress """
 class AliExpressParserRequest:
     def __init__(self):
         self.config = json_config.connect('./config/request.json')
