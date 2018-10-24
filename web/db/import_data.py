@@ -18,8 +18,9 @@ class DBImport:
             session.add(newCategory)
             try:
                 session.commit()
-            except SQLAlchemyError:
-                print("The category exist")
+            except SQLAlchemyError as error:
+                session.rollback()
+                print(error.args)
 
 
         session.close_all()
