@@ -1,5 +1,5 @@
 """The module for update data from aliexpress """
-from web.aliexpress.request_parser.parser import AliExpressParserRequest
+from cli.request_parser.parser import AliExpressParserRequest
 from web.db.import_data import DBImport
 
 
