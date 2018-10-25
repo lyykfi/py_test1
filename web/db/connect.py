@@ -25,6 +25,7 @@ class DBConnector:
     def session_scope(self):
         Session = self.get_session()
         session = Session()
+
         try:
             yield session
             session.commit()
