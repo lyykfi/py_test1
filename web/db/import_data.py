@@ -12,7 +12,6 @@ class DBImport:
 
     def import_data(self, data: ParserRequestResult):
         with self.connector.session_scope() as session:
-            print(session)
             session.add_all([Category(name=category.name) for category in data.categories])
 
             try:
